@@ -128,8 +128,7 @@ function angleBetween(v1, v2) {
 function areaTriangle(v1, v2) {
     var cross = Vector3.cross(v1, v2);
     var areaParallelogram = cross.magnitude();
-    var areaTriangle = areaParallelogram / 2;
-    return areaTriangle;
+    return areaParallelogram / 2;
 }
 
 function main() {
