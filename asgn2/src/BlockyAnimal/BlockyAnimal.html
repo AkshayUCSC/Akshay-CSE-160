@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Blocky Ox Animal</title>
+  </head>
+
+  <body>
+    <h1>Blocky Ox</h1>
+
+    <div class="page">
+      <div>
+        <canvas id="webgl" width="500" height="500" style="border: 1px solid black;">
+          Please use a browser that supports canvas.
+        </canvas>
+
+        <p id="numdot">ms: -- | fps: --</p>
+
+        <p class="hint">
+          Drag on the canvas to rotate the ox. Hold <strong>Shift</strong> and click the canvas to poke it.
+        </p>
+      </div>
+
+      <div class="controls">
+        <h2>Animation</h2>
+        <button type="button" id="animationOnButton">Animation ON</button>
+        <button type="button" id="animationOffButton">Animation OFF</button>
+        <button type="button" id="resetButton">Reset Pose</button>
+
+        <h2>Global Rotation</h2>
+        <div class="control-row">
+          <label for="globalYSlide">Global Y</label>
+          <input type="range" min="-180" max="180" value="20" id="globalYSlide">
+        </div>
+        <div class="control-row">
+          <label for="globalXSlide">Global X</label>
+          <input type="range" min="-75" max="75" value="-8" id="globalXSlide">
+        </div>
+
+        <h2>Head / Tail Joints</h2>
+        <div class="control-row">
+          <label for="neckSlide">Neck</label>
+          <input type="range" min="-45" max="45" value="-12" id="neckSlide">
+        </div>
+        <div class="control-row">
+          <label for="headSlide">Head</label>
+          <input type="range" min="-45" max="45" value="6" id="headSlide">
+        </div>
+        <div class="control-row">
+          <label for="jawSlide">Jaw</label>
+          <input type="range" min="0" max="45" value="0" id="jawSlide">
+        </div>
+        <div class="control-row">
+          <label for="tailSlide">Tail</label>
+          <input type="range" min="-80" max="80" value="12" id="tailSlide">
+        </div>
+
+        <h2>Front Leg: 3-Level Joint</h2>
+        <div class="control-row">
+          <label for="frontLegSlide">Upper Leg</label>
+          <input type="range" min="-45" max="45" value="8" id="frontLegSlide">
+        </div>
+        <div class="control-row">
+          <label for="frontKneeSlide">Knee</label>
+          <input type="range" min="-10" max="65" value="15" id="frontKneeSlide">
+        </div>
+        <div class="control-row">
+          <label for="frontHoofSlide">Hoof</label>
+          <input type="range" min="-35" max="35" value="-8" id="frontHoofSlide">
+        </div>
+
+        <h2>Back Leg: 3-Level Joint</h2>
+        <div class="control-row">
+          <label for="backLegSlide">Upper Leg</label>
+          <input type="range" min="-45" max="45" value="-8" id="backLegSlide">
+        </div>
+        <div class="control-row">
+          <label for="backKneeSlide">Knee</label>
+          <input type="range" min="-10" max="65" value="15" id="backKneeSlide">
+        </div>
+        <div class="control-row">
+          <label for="backHoofSlide">Hoof</label>
+          <input type="range" min="-35" max="35" value="-8" id="backHoofSlide">
+        </div>
+      </div>
+    </div>
+
+    <script src="../lib/webgl-utils.js"></script>
+    <script src="../lib/webgl-debug.js"></script>
+    <script src="../lib/cuon-utils.js"></script>
+    <script src="../lib/cuon-matrix.js"></script>
+    <script src="Cube.js"></script>
+    <script src="BlockyAnimal.js"></script>
+  </body>
+</html>
