@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Minecraft World</title>
+  <style>
+    body { margin: 0; background: #000; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+    canvas { display: block; cursor: crosshair; }
+    #hud {
+      position: fixed; top: 10px; left: 50%; transform: translateX(-50%);
+      color: #fff; font-family: monospace; font-size: 14px;
+      background: rgba(0,0,0,0.5); padding: 6px 12px; border-radius: 6px;
+      pointer-events: none; text-align: center;
+    }
+    #crosshair {
+      position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 20px; height: 20px; pointer-events: none;
+    }
+    #crosshair::before, #crosshair::after {
+      content: ''; position: absolute; background: rgba(255,255,255,0.8);
+    }
+    #crosshair::before { width: 2px; height: 100%; left: 50%; transform: translateX(-50%); }
+    #crosshair::after  { width: 100%; height: 2px; top: 50%; transform: translateY(-50%); }
+  </style>
+</head>
+<body>
+  <canvas id="webgl" width="640" height="640"></canvas>
+  <div id="hud">WASD: Move &nbsp; Q/E: Rotate &nbsp; Mouse: Look &nbsp; Click: Lock &nbsp; F: Add Block &nbsp; G: Delete Block</div>
+  <div id="crosshair"></div>
+
+  <script src="../lib/cuon-utils.js"></script>
+  <script src="../lib/cuon-matrix.js"></script>
+  <script src="Cube.js"></script>
+  <script src="Camera.js"></script>
+  <script src="World.js"></script>
+</body>
+</html>
