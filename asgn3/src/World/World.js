@@ -1,3 +1,4 @@
+// World.js
 // ─── Shaders ────────────────────────────────────────────────────────────────
 var VSHADER_SOURCE = `
   precision mediump float;
