@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Minecraft World — Phong Lighting</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; background: #111; display: flex; flex-direction: column;
+      align-items: center; font-family: monospace;
+    }
+    canvas { display: block; cursor: crosshair; }
+
+    #hud {
+      position: fixed; top: 10px; left: 50%; transform: translateX(-50%);
+      color: #fff; font-size: 13px;
+      background: rgba(0,0,0,0.55); padding: 5px 12px; border-radius: 6px;
+      pointer-events: none; text-align: center;
+    }
+    #crosshair {
+      position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 20px; height: 20px; pointer-events: none;
+    }
+    #crosshair::before, #crosshair::after {
+      content: ''; position: absolute; background: rgba(255,255,255,0.8);
+    }
+    #crosshair::before { width: 2px; height: 100%; left: 50%; transform: translateX(-50%); }
+    #crosshair::after  { width: 100%; height: 2px; top: 50%; transform: translateY(-50%); }
+
+    #controls {
+      width: 640px; background: #1e1e2e; color: #cdd6f4;
+      padding: 10px 14px; display: flex; flex-wrap: wrap; gap: 10px 18px;
+      align-items: center; font-size: 12px;
+    }
+    #controls label { display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+    #controls input[type=range] { width: 100px; }
+    #controls button {
+      padding: 4px 10px; cursor: pointer; border: 1px solid #45475a;
+      background: #313244; color: #cdd6f4; border-radius: 4px; font-size: 12px;
+    }
+    #controls button.active { background: #a6e3a1; color: #1e1e2e; border-color: #a6e3a1; }
+    .sep { width: 100%; height: 0; border-top: 1px solid #313244; }
+  </style>
+</head>
+<body>
+  <canvas id="webgl" width="640" height="640"></canvas>
+  <div id="hud">WASD: Move &nbsp; Q/E: Rotate &nbsp; Mouse: Look (click to lock) &nbsp; F: Add Block &nbsp; G: Delete Block</div>
+  <div id="crosshair"></div>
+
+  <div id="controls">
+    <!-- Light position -->
+    <label>Light Angle:
+      <input type="range" id="lightAngle" min="0" max="360" value="0" step="1">
+    </label>
+    <label>Light Height:
+      <input type="range" id="lightHeight" min="1" max="20" value="10" step="0.5">
+    </label>
+
+    <div class="sep"></div>
+
+    <!-- Light colour -->
+    <label>R: <input type="range" id="lightR" min="0" max="255" value="255"></label>
+    <label>G: <input type="range" id="lightG" min="0" max="255" value="255"></label>
+    <label>B: <input type="range" id="lightB" min="0" max="255" value="255"></label>
+
+    <div class="sep"></div>
+
+    <!-- Toggles -->
+    <button id="btnLighting" class="active">Lighting: ON</button>
+    <button id="btnPoint"    class="active">Point Light: ON</button>
+    <button id="btnSpot"     class="active">Spot Light: ON</button>
+    <button id="btnNormals">Normals: OFF</button>
+    <button id="btnAnim"     class="active">Anim: ON</button>
+  </div>
+
+  <script src="../lib/cuon-utils.js"></script>
+  <script src="../lib/cuon-matrix.js"></script>
+  <script src="Cube.js"></script>
+  <script src="Sphere.js"></script>
+  <script src="Model.js"></script>
+  <script src="Camera.js"></script>
+  <script src="World2.js"></script>
+</body>
+</html>
